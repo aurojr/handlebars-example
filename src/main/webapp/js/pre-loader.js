@@ -1,5 +1,3 @@
-/*global Handlebars:true, jQuery:true, console:true*/
-
 var App = App || {};
 (function (Handlebars, $) {
     'use strict';
@@ -33,16 +31,16 @@ var App = App || {};
             items: [
                 {
                     label: 'Link1',
-                    href: '/link1'
+                    href: 'link1'
                 }, {
                     label: 'Link2',
-                    href: '/link2'
+                    href: 'link2'
                 }, {
                     label: 'Link3',
-                    href: '/link3'
+                    href: 'link3'
                 }, {
                     label: 'Link4',
-                    href: '/link4'
+                    href: 'link4'
                 }]
         }
     };
