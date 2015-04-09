@@ -1,4 +1,5 @@
 var App = App || {};
+
 (function (Handlebars, $) {
     'use strict';
 
@@ -9,7 +10,7 @@ var App = App || {};
 
         loadMenu: function () {
             App.PreLoader.fetchMenuPartial().done(function () {
-                App.PreLoader.processMenu('nav', App.PreLoader.Menu);
+                App.API.processTemplate('nav', App.PreLoader.Menu);
             });
         },
 
@@ -17,14 +18,6 @@ var App = App || {};
             return $.get('./modules/menu/menu.html', function (data) {
                 Handlebars.registerPartial('menu', data);
             }, "html");
-        },
-
-        processMenu: function (selector, data) {
-            var $menu, template;
-
-            $menu = $(selector).text();
-            template = Handlebars.compile($menu);
-            $(selector).html(template(data));
         },
 
         Menu: {
