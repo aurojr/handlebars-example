@@ -28,7 +28,7 @@ module.exports = function (grunt) {
             options: {
                 banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */'
             },
-            dist: {
+            prod: {
                 src: ['src/**/*.js'],
                 dest: 'target/classes/<%= pkg.name %>.js'
             }
@@ -48,6 +48,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('test', ['jshint']);
-    grunt.registerTask('default', ['jshint', 'uglify']);
+    grunt.registerTask('development', ['jshint', 'watch']);
+    grunt.registerTask('production', ['jshint', 'uglify']);
 };
