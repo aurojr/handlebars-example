@@ -29,8 +29,8 @@ module.exports = function (grunt) {
                 banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */'
             },
             prod: {
-                src: ['src/**/*.js'],
-                dest: 'target/classes/<%= pkg.name %>.js'
+                src: ['src/main/webapp/**/*.js'],
+                dest: 'target/classes/<%= pkg.name %>.min.js'
             }
         },
 
@@ -47,7 +47,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
-    grunt.registerTask('development', ['jshint', 'watch']);
+    grunt.registerTask('development', ['jshint', 'concat']);
     grunt.registerTask('production', ['jshint', 'uglify']);
 };
