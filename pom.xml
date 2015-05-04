@@ -40,9 +40,8 @@
                             <outputDirectory>${basedir}/target-grunt</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>./</directory>
+                                    <directory>${basedir}</directory>
                                     <filtering>true</filtering>
-                                    <exclude>**/**</exclude>
                                     <include>bower.json</include>
                                 </resource>
                             </resources>
