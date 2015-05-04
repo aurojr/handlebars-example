@@ -15,8 +15,8 @@ var App = App || {};
         },
 
         fetchMenuPartial: function () {
-            return $.get('./modules/menu/menu.html', function (data) {
-                handlebars.registerPartial('menu', data);
+            return jQuery.get('./modules/menu/menu.html', function (data) {
+                Handlebars.registerPartial('menu', data);
             }, 'html');
         }
     };

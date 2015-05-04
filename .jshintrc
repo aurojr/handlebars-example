@@ -21,6 +21,6 @@
 
     "predef": [
         "jQuery",
-        "handlebars"
+        "Handlebars"
     ]
 }

@@ -8,7 +8,7 @@ var App = App || {};
             var $element, template;
 
             $element = jQuery(selector).text();
-            template = handlebars.compile($element);
+            template = Handlebars.compile($element);
             jQuery(selector).html(template(data));
         }
     };
