@@ -1,14 +1,14 @@
 var App = App || {};
-(function ($) {
+(function () {
     'use strict';
 
-    $(document).ready(function () {
-        $(window).load(function () {
+    jQuery(document).ready(function () {
+        jQuery(window).load(function () {
             App.PreLoader.loadIndex();
         });
 
-        $(document).ajaxStart(function () {
-            $('.preloader').delay(400).fadeOut(500);
+        jQuery(document).ajaxStart(function () {
+            jQuery('.preloader').delay(400).fadeOut(500);
         });
     });
-}(jQuery));
+}());

@@ -1,6 +1,6 @@
 var App = App || {};
 
-(function (Handlebars, $) {
+(function () {
     'use strict';
 
     App.PreLoader = {
@@ -16,8 +16,8 @@ var App = App || {};
 
         fetchMenuPartial: function () {
             return $.get('./modules/menu/menu.html', function (data) {
-                Handlebars.registerPartial('menu', data);
-            }, "html");
+                handlebars.registerPartial('menu', data);
+            }, 'html');
         }
     };
-}(Handlebars, jQuery));
+}());

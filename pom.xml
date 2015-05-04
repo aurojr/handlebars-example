@@ -26,6 +26,31 @@
                 </configuration>
             </plugin>
             <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target-grunt</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>./</directory>
+                                    <filtering>true</filtering>
+                                    <exclude>**/**</exclude>
+                                    <include>bower.json</include>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>pl.allegro</groupId>
                 <artifactId>grunt-maven-plugin</artifactId>
                 <version>${grunt-maven-plugin.version}</version>
@@ -36,13 +61,12 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>npm install</id>
+                        <id>npm + bower</id>
                         <goals>
+                            <goal>create-resources</goal>
                             <goal>npm</goal>
+                            <goal>bower</goal>
                         </goals>
-                        <configuration>
-                            <arguments>install</arguments>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>grunt</id>

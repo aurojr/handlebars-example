@@ -1,6 +1,8 @@
 var App = App || {};
 
 (function () {
+    'use strict';
+
     App.Menu = {
         items: [{
             label: 'Link1',

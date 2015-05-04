@@ -1,16 +1,32 @@
+'use strict';
+
 module.exports = function (grunt) {
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
+
+    // Load grunt tasks automatically
+    require('load-grunt-tasks')(grunt);
+
+    // Configurable paths
+    var config = {
+        app: 'src/main/webapp',
+        dist: 'target/classes'
+    };
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        config: config,
+
         jshint: {
-            files: ['Gruntfile.js', 'src/main/webapp/**/*.js', 'test/**/*.js', '!src/main/webapp/lib/**/*.js'],
+            files: [
+                'Gruntfile.js',
+                'src/main/webapp/**/*.js',
+                'test/**/*.js',
+                '!src/main/webapp/lib/**/*.js'
+            ],
             options: {
-                globals: {
-                    jQuery: true,
-                    console: true,
-                    module: true,
-                    document: true
-                }
+                jshintrc: '.jshintrc'
             }
         },
 
@@ -34,6 +50,13 @@ module.exports = function (grunt) {
             }
         },
 
+        wiredep: {
+            app: {
+                ignorePath: /^\/|\.\.\//,
+                src: ['<%= config.app %>/index.html']
+            }
+        },
+
         qunit: {
             files: ['test/**/*.html']
         },
@@ -44,11 +67,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-
-    grunt.registerTask('development', ['jshint', 'concat']);
+    grunt.registerTask('development', ['jshint', 'concat', 'wiredep']);
     grunt.registerTask('production', ['jshint', 'uglify']);
+    grunt.registerTask('default', ['development']);
 };
