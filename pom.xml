@@ -7,6 +7,21 @@
     <name>An example of web app using HandlebarsJS</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+    	<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-servlet</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -27,11 +42,10 @@
             </plugin>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.7</version>
+                <version>${resources.version}</version>
                 <executions>
                     <execution>
                         <id>copy-resources</id>
-                        <!-- here the phase you need -->
                         <phase>compile</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -111,6 +125,8 @@
     <properties>
         <grunt-maven-plugin.version>1.4.1</grunt-maven-plugin.version>
         <tomcat.version>2.0</tomcat.version>
+        <jersey.version>1.19</jersey.version>
         <junit.version>3.8.1</junit.version>
+        <resources.version>2.7</resources.version>
     </properties>
 </project>
