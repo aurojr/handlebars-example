@@ -12,7 +12,8 @@ module.exports = function (grunt) {
     app: 'src/main/webapp',
     test: 'src/main/test',
     dist: 'target/classes',
-    bowerTest: grunt.file.readJSON('src/main/test/.bowerrc')
+    bowerTest: grunt.file.readJSON('src/main/test/.bowerrc'),
+    bowerProd: grunt.file.readJSON('.bowerrc'),
   };
 
   grunt.initConfig({
@@ -26,7 +27,7 @@ module.exports = function (grunt) {
         '<%= config.app %>/**/*.js',
         '<%= config.test %>/**/*.js',
         '!<%= config.app %>/lib/**/*.js',
-        '!<%= config.test %>/<%= config.bowerTest.directory %>/**/*.js'],
+        '!<%= config.bowerTest.directory %>/**/*.js'],
       options: {
         jshintrc: '.jshintrc'
       }
@@ -88,11 +89,19 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         ignorePath: /^\/|\.\.\//,
-        src: ['<%= config.app %>/index.html']
+        src: ['<%= config.app %>/index.html'],
+        options: {
+          directory: '<%= config.bowerProd.directory %>',
+          bowerJson: require('./' + config.bowerProd.directory + '/../bower.json')
+        }
       },
       test: {
         ignorePath: /^\/|\.\.\//,
-        src: ['<%= config.test %>/index.html']
+        src: ['<%= config.test %>/index.html'],
+        options: {
+          directory: '<%= config.bowerTest.directory %>',
+          bowerJson: require('./' + config.bowerTest.directory + '/../bower.json')
+        }
       }
     },
 
