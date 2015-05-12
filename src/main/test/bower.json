@@ -1,14 +1,11 @@
 {
-  "name": "handlebars-example-test",
+  "name": "handlebars-example",
   "version": "0.0.0",
-  "moduleName": "handlebarsExampleTest",
+  "moduleName": "handlebarsExample",
   "private": true,
   "dependencies": {
     "mocha": "~2.2.4",
     "chai": "~2.3.0"
   },
-  "devDependencies": {
-    "mocha": "~2.2.4",
-    "chai": "~2.3.0"
-  }
+  "devDependencies": {}
 }

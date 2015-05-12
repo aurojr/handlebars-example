@@ -74,20 +74,17 @@
         </configuration>
         <executions>
           <execution>
-            <id>npm + bower</id>
+            <id>npm + bower + grunt</id>
             <goals>
               <goal>create-resources</goal>
               <goal>npm</goal>
               <goal>bower</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>grunt</id>
-            <goals>
               <goal>grunt</goal>
             </goals>
             <configuration>
-              <target>${grunt.env}</target>
+            	<gruntOptions>
+            		<target>${grunt.env}</target>
+            	</gruntOptions>
             </configuration>
           </execution>
         </executions>

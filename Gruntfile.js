@@ -27,7 +27,7 @@ module.exports = function (grunt) {
         '<%= config.app %>/**/*.js',
         '<%= config.test %>/**/*.js',
         '!<%= config.app %>/lib/**/*.js',
-        '!<%= config.bowerTest.directory %>/**/*.js'],
+        '!<%= config.test %>/<%= config.bowerTest.directory %>/**/*.js'],
       options: {
         jshintrc: '.jshintrc'
       }
@@ -91,16 +91,16 @@ module.exports = function (grunt) {
         ignorePath: /^\/|\.\.\//,
         src: ['<%= config.app %>/index.html'],
         options: {
-          directory: '<%= config.bowerProd.directory %>',
-          bowerJson: require('./' + config.bowerProd.directory + '/../bower.json')
+          directory: 'target-grunt/<%= config.bowerProd.directory %>',
+          bowerJson: require('./target-grunt/bower.json')
         }
       },
       test: {
         ignorePath: /^\/|\.\.\//,
         src: ['<%= config.test %>/index.html'],
         options: {
-          directory: '<%= config.bowerTest.directory %>',
-          bowerJson: require('./' + config.bowerTest.directory + '/../bower.json')
+          directory: '<%= config.test %>/<%= config.bowerTest.directory %>',
+          bowerJson: require('./' + config.test + '/bower.json')
         }
       }
     },
