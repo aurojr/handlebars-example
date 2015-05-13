@@ -21,3 +21,6 @@ bower_components
 # eclipse files
 .classpath
 .project
+
+# files copied by the build process
+src/main/webapp/lib/*

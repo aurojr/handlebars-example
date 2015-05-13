@@ -75,6 +75,7 @@
         <executions>
           <execution>
             <id>npm + bower + grunt</id>
+            <phase>compile</phase>
             <goals>
               <goal>create-resources</goal>
               <goal>npm</goal>
@@ -82,9 +83,9 @@
               <goal>grunt</goal>
             </goals>
             <configuration>
-            	<gruntOptions>
-            		<target>${grunt.env}</target>
-            	</gruntOptions>
+              <gruntOptions>
+                <target>${grunt.env}</target>
+              </gruntOptions>
             </configuration>
           </execution>
         </executions>

@@ -33,6 +33,16 @@ module.exports = function (grunt) {
       }
     },
 
+    bower: {
+      all: {
+        options: {
+          install: false,
+          targetDir: '<%= config.app %>/lib',
+          layout: 'byComponent'
+        }
+      }
+    },
+
     // Mocha testing framework configuration options
     mocha: {
       all: {
@@ -88,11 +98,21 @@ module.exports = function (grunt) {
 
     wiredep: {
       app: {
-        ignorePath: /^\/|\.\.\//,
+        ignorePath: '/^\/|\.\.\//',
         src: ['<%= config.app %>/index.html'],
         options: {
-          directory: 'target-grunt/<%= config.bowerProd.directory %>',
+          directory: 'target-grunt/<%= config.bowerTest.directory %>',
           bowerJson: require('./target-grunt/bower.json')
+        },
+        fileTypes: {
+          html: {
+            replace: {
+              js: function (filePath) {
+                var re = new RegExp('^.*' + config.bowerTest.directory + '\/', 'g');
+                return '<script src="' + filePath.replace(re, 'lib/') + '"></script>';
+              }
+            }
+          }
         }
       },
       test: {
@@ -111,8 +131,8 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('development', ['jshint', 'concat', 'wiredep:app', 'test']);
+  grunt.registerTask('development', ['jshint', 'bower:all', 'wiredep:app', 'test']);
   grunt.registerTask('test', ['wiredep:test', 'connect:test', 'mocha']);
-  grunt.registerTask('production', ['jshint', 'uglify']);
+  grunt.registerTask('production', ['jshint', 'concat', 'uglify']);
   grunt.registerTask('default', ['development']);
 };
