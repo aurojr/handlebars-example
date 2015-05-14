@@ -108,8 +108,11 @@ module.exports = function (grunt) {
           html: {
             replace: {
               js: function (filePath) {
-                var re = new RegExp('^.*' + config.bowerTest.directory + '\/', 'g');
-                return '<script src="' + filePath.replace(re, 'lib/') + '"></script>';
+                var removeBowerFolder = new RegExp('^.*' + config.bowerTest.directory + '\/', 'g');
+                var removeIntermediateFolders = new RegExp('lib\/([A-Za-z0-9._%\\+-]+\/){1}([A-Za-z0-9._%\\+-]+\/){1,}', 'g');
+                filePath = filePath.replace(removeBowerFolder, 'lib/').replace(removeIntermediateFolders, 'lib/$1/').replace('\/\/', '\/');
+
+                return '<script src="' + filePath + '"></script>';
               }
             }
           }
