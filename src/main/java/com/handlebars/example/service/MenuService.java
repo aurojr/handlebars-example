@@ -43,6 +43,11 @@ public class MenuService {
 		item4.setHref("link4");
 		items.add(item4);
 		
+		MenuItem item5 = new MenuItem();
+		item5.setLabel("Link5");
+		item5.setHref("link5");
+		items.add(item5);
+		
 		menu.setItems(items);
 
 		return Response.status(Status.OK).entity(menu).build();

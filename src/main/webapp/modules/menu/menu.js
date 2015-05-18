@@ -1,21 +1,25 @@
 var App = App || {};
 
 (function () {
-    'use strict';
+  'use strict';
 
-    App.Menu = {
-        items: [{
-            label: 'Link1',
-            href: 'link1'
-        }, {
-            label: 'Link2',
-            href: 'link2'
-        }, {
-            label: 'Link3',
-            href: 'link3'
-        }, {
-            label: 'Link4',
-            href: 'link4'
-        }]
-    };
+  var items;
+
+  var getMenuItems = function () {
+    var items;
+    jQuery.get('api/menu', function (data) {
+      items = data;
+    });
+    return items;
+  };
+
+  App.Menu = {
+    items: items,
+
+    load: function () {
+      this.items = getMenuItems();
+    }
+  };
+
+  App.Menu.load();
 }());

@@ -40,6 +40,13 @@ module.exports = function (grunt) {
           targetDir: '<%= config.app %>/lib',
           layout: 'byComponent'
         }
+      },
+      test: {
+        options: {
+          install: true,
+          targetDir: '<%= config.test %>/lib',
+          layout: 'byComponent'
+        }
       }
     },
 
