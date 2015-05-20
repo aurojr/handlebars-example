@@ -3,8 +3,10 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var loadMenuItems = function () {
-    jQuery.get('api/menu', function (data) {
+  var loadMenuItems;
+
+  loadMenuItems = function () {
+    App.API.get('api/menu', function (data) {
       App.Menu.items = data.items;
     });
   };
