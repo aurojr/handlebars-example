@@ -3,23 +3,16 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var items;
-
-  var getMenuItems = function () {
-    var items;
+  var loadMenuItems = function () {
     jQuery.get('api/menu', function (data) {
-      items = data;
+      App.Menu.items = data.items;
     });
-    return items;
   };
 
   App.Menu = {
-    items: items,
-
-    load: function () {
-      this.items = getMenuItems();
-    }
+    items: [],
+    loadMenuItems: loadMenuItems
   };
 
-  App.Menu.load();
+  App.Menu.loadMenuItems();
 }());
