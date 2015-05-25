@@ -33,6 +33,7 @@
     "load-grunt-tasks": "^0.4.0",
     "npm": "~2.5.1",
     "phantomjs": "^1.9.16",
+    "sinon": "^1.14.1",
     "time-grunt": "^0.4.0"
   }
 }

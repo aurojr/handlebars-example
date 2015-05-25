@@ -54,6 +54,7 @@ module.exports = function (grunt) {
     mocha: {
       all: {
         options: {
+          reporter: 'Nyan',
           run: true,
           urls: ['http://<%= connect.options.hostname %>:<%= connect.test.options.port %>/index.html']
         }
@@ -68,6 +69,16 @@ module.exports = function (grunt) {
         livereload: 35729,
         // Change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
+      },
+      livereload: {
+        options: {
+          middleware: function (connect) {
+            return [
+              connect.static(config.app),
+              connect().use('/bower_components', connect.static('<%= config.test %>/bower_components'))
+            ];
+          }
+        }
       },
       test: {
         options: {

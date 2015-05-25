@@ -15,7 +15,7 @@ var App = App || {};
 
   get = function (url, data, success, dataType) {
     return jQuery.get(url, data, success, dataType);
-  }
+  };
 
   App.API = {
     processTemplate: processTemplate,
