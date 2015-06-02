@@ -9,7 +9,7 @@ var App = App || {};
     return {
       menu: 'modules/menu/menu.html'
     };
-  }
+  };
 
   App.Resources = App.Resources || {};
   App.Resources.Templates = templates();

@@ -11,7 +11,7 @@ var App = App || {};
         App.PreLoader.loadIndex();
       });
     });
-  }
+  };
 
   App.load = load;
 }());

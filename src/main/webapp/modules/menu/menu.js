@@ -17,7 +17,7 @@ var App = App || {};
 
   App.Menu = {
     items: [],
-    init: loadMenuItems
+    init: init
   };
 
   App.Menu.init();
