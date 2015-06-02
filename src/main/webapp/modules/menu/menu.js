@@ -3,7 +3,7 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var loadMenuItems;
+  var init, loadMenuItems;
 
   loadMenuItems = function () {
     App.API.get('api/menu', function (data) {
@@ -11,10 +11,14 @@ var App = App || {};
     });
   };
 
-  App.Menu = {
-    items: [],
-    loadMenuItems: loadMenuItems
+  init = function () {
+    loadMenuItems();
   };
 
-  App.Menu.loadMenuItems();
+  App.Menu = {
+    items: [],
+    init: loadMenuItems
+  };
+
+  App.Menu.init();
 }());
