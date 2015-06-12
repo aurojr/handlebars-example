@@ -3,22 +3,16 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var init, loadMenuItems;
+  var load;
 
-  loadMenuItems = function () {
-    App.API.get('api/menu', function (data) {
+  load = function () {
+    return App.API.get('api/menu', function (data) {
       App.Menu.items = data.items;
     });
   };
 
-  init = function () {
-    loadMenuItems();
-  };
-
   App.Menu = {
     items: [],
-    init: init
+    load: load
   };
-
-  App.Menu.init();
 }());

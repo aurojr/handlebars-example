@@ -3,13 +3,15 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var list;
+  var search;
 
-  list = function () {
-
+  search = function (successFn) {
+    return App.API.get('api/menu', function (data) {
+      successFn(data);
+    });
   };
 
   App.Product = {
-    list: list
+    search: search
   };
 }());

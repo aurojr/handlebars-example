@@ -3,16 +3,14 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var loadMenu, loadIndex;
-
-  loadMenu = function () {
-    App.API.fetchPartial(App.Resources.Templates.menu, 'menu').done(function () {
-      App.API.processTemplate('nav', App.Menu);
-    });
-  };
+  var loadIndex;
 
   loadIndex = function () {
-    loadMenu();
+    App.Menu.load().done(function () {
+      App.API.fetchPartial(App.Resources.Templates.menu, 'menu').done(function () {
+        App.API.processTemplate('nav', App.Menu);
+      });
+    });
   };
 
   App.PreLoader = {

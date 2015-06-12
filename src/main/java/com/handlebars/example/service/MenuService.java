@@ -24,8 +24,8 @@ public class MenuService {
 		List<MenuItem> items = new ArrayList<MenuItem>();
 
 		MenuItem item1 = new MenuItem();
-		item1.setLabel("Link1");
-		item1.setHref("link1");
+		item1.setLabel("Products");
+		item1.setHref("product");
 		items.add(item1);
 
 		MenuItem item2 = new MenuItem();
