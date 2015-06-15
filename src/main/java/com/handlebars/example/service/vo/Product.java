@@ -2,18 +2,21 @@ package com.handlebars.example.service.vo;
 
 public class Product {
 	private String name;
-	private Double value;
-	
+	private Double price;
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Double getValue() {
-		return value;
+
+	public Double getPrice() {
+		return price;
 	}
-	public void setValue(Double value) {
-		this.value = value;
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 }

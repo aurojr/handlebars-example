@@ -3,7 +3,11 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var processTemplate, get, fetchPartial;
+  var get, renderPartial, processTemplate, fetchPartial;
+
+  get = function (url, data, success, dataType) {
+    return jQuery.get(url, data, success, dataType);
+  };
 
   processTemplate = function (selector, data) {
     var $element, template;
@@ -13,19 +17,20 @@ var App = App || {};
     jQuery(selector).html(template(data));
   };
 
-  get = function (url, data, success, dataType) {
-    return jQuery.get(url, data, success, dataType);
-  };
-
-  fetchPartial = function (templateLocation, partialName) {
+  fetchPartial = function (partialName, templateLocation) {
     return App.API.get(templateLocation, function (data) {
       Handlebars.registerPartial(partialName, data);
     }, 'html');
   };
 
+  renderPartial = function (partialName, templateLocation, selector, data) {
+    fetchPartial(partialName, templateLocation).done(function () {
+      processTemplate(selector, data);
+    });
+  };
+
   App.API = {
-    processTemplate: processTemplate,
     get: get,
-    fetchPartial: fetchPartial
+    renderPartial: renderPartial
   };
 }());

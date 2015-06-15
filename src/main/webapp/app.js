@@ -10,6 +10,10 @@ var App = App || {};
         jQuery('.preloader').delay(400).fadeOut(500);
         App.PreLoader.loadIndex();
       });
+
+      jQuery(window).on('hashchange', function () {
+        App.Routes.render(window.location.hash);
+      });
     });
   };
 

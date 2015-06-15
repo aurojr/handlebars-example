@@ -6,7 +6,7 @@ var App = App || {};
   var search;
 
   search = function (successFn) {
-    return App.API.get('api/menu', function (data) {
+    return App.API.get('api/product', function (data) {
       successFn(data);
     });
   };
