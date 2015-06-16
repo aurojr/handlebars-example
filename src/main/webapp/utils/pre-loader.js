@@ -6,9 +6,7 @@ var App = App || {};
   var loadIndex;
 
   loadIndex = function () {
-    App.Menu.load().done(function () {
-      App.API.renderPartial(App.Resources.Templates.menu, 'nav', App.Menu);
-    });
+    App.Menu.load('nav');
   };
 
   App.PreLoader = {

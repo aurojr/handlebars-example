@@ -3,11 +3,17 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var load;
+  var load, fetchItems;
 
-  load = function () {
+  fetchItems = function () {
     return App.API.get('api/menu', function (data) {
       App.Menu.items = data.items;
+    });
+  };
+
+  load = function (selector) {
+    fetchItems().done(function () {
+      App.API.renderPartial(App.Resources.Templates.menu, selector, App.Menu);
     });
   };
 
