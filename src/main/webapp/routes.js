@@ -19,9 +19,14 @@ var App = App || {};
     });
   };
 
-  render = function (url) {
-    if (App.Routes.map[url]) {
-      App.Routes.map[url]();
+  render = function (uri) {
+    App.API.changeMainContent('');
+
+    // Remove trailing #
+    uri = uri.substr(1);
+
+    if (App.Routes.map[uri]) {
+      App.Routes.map[uri]();
     } else {
       console.log('Undefined location');
     }
@@ -29,7 +34,8 @@ var App = App || {};
 
   App.Routes = {
     map: {
-      '': product
+      '': product,
+      'product': product
     },
     render: render
   };

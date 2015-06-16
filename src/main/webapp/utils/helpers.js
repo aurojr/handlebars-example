@@ -5,11 +5,11 @@ var App = App || {};
 
   var register, formatCurrency;
 
-  formatCurrency = function (context, options) {
+  formatCurrency = function (context) {
     var ret = '';
 
     if (context !== undefined) {
-      ret = "$ " + context;
+      ret = '$ ' + context;
     }
 
     return ret;

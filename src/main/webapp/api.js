@@ -3,7 +3,7 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var get, renderPartial, processTemplate, fetchPartial;
+  var get, renderPartial, changeMainContent, processTemplate, fetchPartial;
 
   get = function (url, data, success, dataType) {
     return jQuery.get(url, data, success, dataType);
@@ -29,8 +29,13 @@ var App = App || {};
     });
   };
 
+  changeMainContent = function (content) {
+    jQuery('#container').html(content);
+  };
+
   App.API = {
     get: get,
-    renderPartial: renderPartial
+    renderPartial: renderPartial,
+    changeMainContent: changeMainContent
   };
 }());

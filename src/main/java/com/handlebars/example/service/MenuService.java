@@ -25,7 +25,7 @@ public class MenuService {
 
 		MenuItem item1 = new MenuItem();
 		item1.setLabel("Products");
-		item1.setHref("product");
+		item1.setHref("#product");
 		items.add(item1);
 
 		MenuItem item2 = new MenuItem();
