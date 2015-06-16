@@ -1,0 +1,15 @@
+body {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 15px;
+  color: #414141;
+  padding: 0.18em;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #414141;
+  text-decoration: none;
+}

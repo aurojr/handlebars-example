@@ -30,22 +30,22 @@ public class MenuService {
 
 		MenuItem item2 = new MenuItem();
 		item2.setLabel("Link2");
-		item2.setHref("link2");
+		item2.setHref("#link2");
 		items.add(item2);
 
 		MenuItem item3 = new MenuItem();
 		item3.setLabel("Link3");
-		item3.setHref("link3");
+		item3.setHref("#link3");
 		items.add(item3);
 
 		MenuItem item4 = new MenuItem();
 		item4.setLabel("Link4");
-		item4.setHref("link4");
+		item4.setHref("#link4");
 		items.add(item4);
 
 		MenuItem item5 = new MenuItem();
 		item5.setLabel("Link5");
-		item5.setHref("link5");
+		item5.setHref("#link5");
 		items.add(item5);
 
 		menu.setItems(items);

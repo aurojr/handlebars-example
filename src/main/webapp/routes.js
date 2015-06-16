@@ -14,7 +14,7 @@ var App = App || {};
     }).done(function () {
       App.API.get(App.Resources.Templates.product, function (data) {
         var template = Handlebars.compile(data);
-        jQuery('#container').html(template(products));
+        App.API.changeMainContent(template(products));
       }, 'html');
     });
   };
