@@ -7,7 +7,7 @@ var App = App || {};
 
   loadIndex = function () {
     App.Menu.load().done(function () {
-      App.API.renderPartial('menu', App.Resources.Templates.menu, 'nav', App.Menu);
+      App.API.renderPartial(App.Resources.Templates.menu, 'nav', App.Menu);
     });
   };
 

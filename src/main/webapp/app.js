@@ -9,6 +9,8 @@ var App = App || {};
       jQuery(window).load(function () {
         jQuery('.preloader').delay(400).fadeOut(500);
         App.PreLoader.loadIndex();
+
+        App.Routes.render(window.location.hash);
       });
 
       jQuery(window).on('hashchange', function () {

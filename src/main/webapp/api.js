@@ -23,7 +23,9 @@ var App = App || {};
     }, 'html');
   };
 
-  renderPartial = function (partialName, templateLocation, selector, data) {
+  renderPartial = function (templateLocation, selector, data) {
+    var partialName = App.Helper.getPartialFromFile(templateLocation);
+
     fetchPartial(partialName, templateLocation).done(function () {
       processTemplate(selector, data);
     });
