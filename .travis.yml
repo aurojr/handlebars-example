@@ -3,8 +3,9 @@ jdk:
   - oraclejdk8
   - oraclejdk7
   - openjdk6
-before_script:
-  - "sudo npm install -g bower grunt-cli"
+before_install:
+  - "sudo npm install -g bower"
+  - "sudo npm install -g grunt-cli"
   - "bower install"
 notifications:
   email:
