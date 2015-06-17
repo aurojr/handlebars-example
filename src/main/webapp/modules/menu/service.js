@@ -1,7 +1,7 @@
 var App = App || {};
 
 (function () {
-  'use strict'
+  'use strict';
 
   var load;
 
