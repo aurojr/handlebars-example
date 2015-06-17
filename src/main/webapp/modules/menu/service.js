@@ -1,6 +1,8 @@
 var App = App || {};
 
 (function () {
+  'use strict'
+
   var load;
 
   load = function (successFn) {
