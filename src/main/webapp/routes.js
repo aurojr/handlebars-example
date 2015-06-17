@@ -6,24 +6,13 @@ var App = App || {};
   var product, render;
 
   product = function () {
-    var products;
-
     jQuery('nav li a[href$="product"]').parent().addClass('active');
-
-    App.Product.search(function (data) {
-      products = {
-        products: data
-      };
-    }).done(function () {
-      App.API.get(App.Resources.Templates.product, function (data) {
-        var template = Handlebars.compile(data);
-        App.API.changeMainContent(template(products));
-      }, 'html');
-    });
+    App.Product.Controller.list();
   };
 
   render = function (uri) {
     App.API.changeMainContent('');
+    jQuery('nav li').removeClass('active');
 
     // Remove trailing #
     uri = uri.substr(1);

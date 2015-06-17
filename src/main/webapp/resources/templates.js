@@ -8,7 +8,9 @@ var App = App || {};
   templates = function () {
     return {
       menu: 'modules/menu/menu.html',
-      product: 'modules/product/product.html'
+      product: {
+        list: 'modules/product/list.html'
+      }
     };
   };
 

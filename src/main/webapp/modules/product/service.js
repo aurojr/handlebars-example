@@ -11,7 +11,8 @@ var App = App || {};
     });
   };
 
-  App.Product = {
+  App.Product = App.Product || {};
+  App.Product.Service = {
     search: search
   };
 }());
