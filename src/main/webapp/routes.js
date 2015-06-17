@@ -7,6 +7,9 @@ var App = App || {};
 
   product = function () {
     var products;
+
+    jQuery('nav li a[href$="product"]').parent().addClass('active');
+
     App.Product.search(function (data) {
       products = {
         products: data
