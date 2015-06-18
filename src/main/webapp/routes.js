@@ -3,11 +3,15 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var product, render;
+  var product, link2, render;
 
   product = function () {
     jQuery('nav li a[href$="product"]').parent().addClass('active');
     App.Product.Controller.list();
+  };
+
+  link2 = function () {
+    jQuery('nav li a[href$="link2"]').parent().addClass('active');
   };
 
   render = function (uri) {
@@ -27,7 +31,8 @@ var App = App || {};
   App.Routes = {
     map: {
       '': product,
-      'product': product
+      'product': product,
+      'link2': link2
     },
     render: render
   };

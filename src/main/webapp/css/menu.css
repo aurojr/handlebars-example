@@ -1,20 +1,31 @@
 nav {
-  background-color: #F5F5F5;
+  background-color: #EAEAEA;
   margin: 0.5em 0;
-  padding: 0.3em;
+  padding: 0.75em 0.5em 0 0.5em;
 }
 
 nav li {
-  padding: 0 0.38em;
   display: inline;
-}
-
-nav li:hover {
-  border: 0.1em solid #000000;
-  border-radius: 0.3em;
-  padding: 0 0.28em;
+  border: solid #000000;
+  border-width: 0.066em 0 0 0;
+  border-radius: 0.3em 0.3em 0 0;
+  padding: 0.18em 0.38em 0 0.58em;
 }
 
 nav li.active {
-  background-color: #FFD8D8;
+  background-color: #FDFDFD;
+  border-radius: 1em 1em 0em 0em;
+  padding: 0.18em 0.48em 0 0.68em;
+  margin-right: -0.3em;
+  margin-left: -0.3em;
+  border-right-width: 0.066em;
+  border-left-width: 0.066em;
+}
+
+nav li:first-child {
+  border-left-width: 0.066em
+}
+
+nav li:last-child {
+  border-right-width: 0.066em
 }
