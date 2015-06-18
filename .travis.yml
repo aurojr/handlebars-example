@@ -9,6 +9,9 @@ before_install:
   - sudo apt-get -y install nodejs
   - sudo npm install -g grunt-cli
   - sudo npm install -g bower
+  - sudo npm install
+  - bower install
+  - cd src/main/test && $(which bower) install && cd -
 notifications:
   email:
     - auro.np@gmail.com
