@@ -78,6 +78,8 @@
             <phase>compile</phase>
             <goals>
               <goal>create-resources</goal>
+              <goal>npm</goal>
+              <goal>bower</goal>
               <goal>grunt</goal>
             </goals>
             <configuration>
