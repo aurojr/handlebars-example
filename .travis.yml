@@ -11,7 +11,7 @@ before_install:
   - sudo npm install -g bower
   - sudo npm install
   - bower install
-  - cd src/main/test && ./node_modules/.bin/bower install && cd -
+  - cd src/main/test && $(which bower) install && cd -
 notifications:
   email:
     - auro.np@gmail.com
