@@ -23,13 +23,34 @@ module.exports = function (grunt) {
 
     jshint: {
       files: [
-        'Gruntfile.js',
+        '!Gruntfile.js',
         '<%= config.app %>/**/*.js',
         '<%= config.test %>/**/*.js',
         '!<%= config.app %>/lib/**/*.js',
         '!<%= config.test %>/<%= config.bowerTest.directory %>/**/*.js'],
       options: {
         jshintrc: '.jshintrc'
+      }
+    },
+
+    auto_install: {
+      main: {
+        options: {
+          cwd: '',
+          stderr: false,
+          failOnError: false,
+          npm: true,
+          bower: 'true'
+        }
+      },
+      test: {
+        options: {
+          cwd: config.test,
+          stderr: false,
+          failOnError: false,
+          npm: false,
+          bower: 'true'
+        }
       }
     },
 
@@ -152,8 +173,8 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('development', ['jshint', 'bower:all', 'wiredep:app', 'test']);
-  grunt.registerTask('test', ['wiredep:test', 'connect:test', 'mocha']);
+  grunt.registerTask('development', ['jshint', 'auto_install', 'bower:all', 'wiredep:app', 'test']);
+  grunt.registerTask('test', ['auto_install:test', 'wiredep:test', 'connect:test', 'mocha']);
   grunt.registerTask('production', ['jshint', 'concat', 'uglify']);
   grunt.registerTask('default', ['development']);
 };
