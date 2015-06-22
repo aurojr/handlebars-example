@@ -7,10 +7,12 @@ div#products-container > div {
   min-height: 10.5em;
   display: inline-block;
   border: 0.066em solid black;
-  border-radius: 0.8em;
   padding: 0.5em;
   margin: 0.33em;
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-border-radius: 0.8em;
+  -moz-boxborder-radius: 0.8em;
+  border-radius: 0.8em;
+  -webkit-box-shadow: 0.3em 0.3em 0.4em 0.1em rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0.3em 0.3em 0.4em 0.1em rgba(0, 0, 0, 0.75);
+  box-shadow: 0.3em 0.3em 0.4em 0.1em rgba(0, 0, 0, 0.75);
 }
