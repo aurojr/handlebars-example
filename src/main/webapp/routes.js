@@ -3,23 +3,23 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var product, link2, render;
+  var index, product, link2, render;
+
+  index = function () {
+    console.log('Index page');
+  };
 
   product = function () {
-    jQuery('nav li a[href$="product"]').parent().addClass('active');
     App.Product.Controller.list();
   };
 
   link2 = function () {
-    jQuery('nav li a[href$="link2"]').parent().addClass('active');
+    console.log('Link2 page');
   };
 
   render = function (uri) {
     App.API.changeMainContent('');
-    jQuery('nav li').removeClass('active');
-
-    // Remove trailing #
-    uri = uri.substr(1);
+    App.Menu.changeActive(uri);
 
     if (App.Routes.map[uri]) {
       App.Routes.map[uri]();
@@ -30,9 +30,10 @@ var App = App || {};
 
   App.Routes = {
     map: {
-      '': product,
-      'product': product,
-      'link2': link2
+      '': index,
+      '#': index,
+      '#product': product,
+      '#link2': link2
     },
     render: render
   };

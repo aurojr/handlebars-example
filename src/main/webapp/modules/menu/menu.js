@@ -3,7 +3,7 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var render;
+  var render, changeActive;
 
   render = function (selector) {
     var menuItems;
@@ -14,7 +14,13 @@ var App = App || {};
     });
   };
 
+  changeActive = function (uri) {
+    jQuery('nav li').removeClass('active');
+    jQuery('nav li a[href^="' + uri + '"]').parent().addClass('active');
+  };
+
   App.Menu = {
-    render: render
+    render: render,
+    changeActive: changeActive
   };
 }());
