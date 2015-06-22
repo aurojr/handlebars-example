@@ -1,11 +1,12 @@
 nav {
   background-color: #EAEAEA;
-  margin: 0.5em 0;
-  padding: 0.75em 0.5em 0 0.5em;
+  margin: 0.5em 0 0;
+  padding: 1.75em 2.5em 0;
 }
 
 nav li {
   display: inline;
+  vertical-align: text-top;
   border: solid #000000;
   border-width: 0.066em 0 0 0;
   border-radius: 0.3em 0.3em 0 0;
@@ -13,7 +14,7 @@ nav li {
 }
 
 nav li.active {
-  background-color: #FDFDFD;
+  background-color: #F7F7EE;
   border-radius: 1em 1em 0em 0em;
   padding: 0.18em 0.48em 0 0.68em;
   margin-right: -0.3em;

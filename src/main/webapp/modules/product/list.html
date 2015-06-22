@@ -1,8 +1,9 @@
 <div id="products-container">
   {{#each products}}
   <div>
-    <label>{{name}}</label>
-    <label>Price: {{formatCurrency price}}</label>
+    <h3>{{name}}</h3>
+    <span>Price: {{formatCurrency price}}</span>
+    <img src="{{image}}"></img>
   </div>
   {{/each}}
 </div>

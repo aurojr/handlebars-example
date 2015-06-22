@@ -3,6 +3,7 @@ package com.handlebars.example.service.vo;
 public class Product {
 	private String name;
 	private Double price;
+	private String image;
 
 	public String getName() {
 		return name;
@@ -19,4 +20,13 @@ public class Product {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 }
