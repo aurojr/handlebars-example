@@ -11,7 +11,7 @@ var App = App || {};
       products = {
         products: data
       };
-    }).done(function () {
+    }).then(function () {
       App.API.get(App.Resources.Templates.product.list, function (data) {
         var template = Handlebars.compile(data);
         App.API.changeMainContent(template(products));

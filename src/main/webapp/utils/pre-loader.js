@@ -6,7 +6,7 @@ var App = App || {};
   var loadIndex;
 
   loadIndex = function () {
-    App.Menu.render('nav');
+    return App.Menu.render('nav');
   };
 
   App.PreLoader = {

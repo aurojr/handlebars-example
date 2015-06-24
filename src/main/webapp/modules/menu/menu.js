@@ -7,10 +7,10 @@ var App = App || {};
 
   render = function (selector) {
     var menuItems;
-    App.Menu.Service.load(function (data) {
+    return App.Menu.Service.load(function (data) {
       menuItems = data;
-    }).done(function () {
-      App.API.renderPartial(App.Resources.Templates.menu, selector, menuItems);
+    }).then(function () {
+      return App.API.renderPartial(App.Resources.Templates.menu, selector, menuItems);
     });
   };
 
