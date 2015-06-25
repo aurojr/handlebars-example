@@ -4,20 +4,20 @@ nav {
   padding-left: 1em;
 }
 
-nav li {
-  display: inline-block;
-  vertical-align: text-top;
-}
+  nav li {
+    display: inline-block;
+    vertical-align: text-top;
+  }
 
-nav li.active > a {
-  background-color: #F7F7EE;
-}
+    nav li.active > a {
+      background-color: #F7F7EE;
+    }
 
-nav li > a {
-  vertical-align: super;
-  font-size: 0.7em;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  display: block;
-  padding: 1.18em 2.38em 1.18em 2.58em;
-}
+    nav li > a {
+      vertical-align: super;
+      font-size: 0.7em;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      display: block;
+      padding: 1.18em 2.38em 1.18em 2.58em;
+    }

@@ -10,7 +10,7 @@ var App = App || {};
   };
 
   product = function () {
-    App.Product.Controller.list();
+    App.Product.Controller.List.load();
   };
 
   link2 = function () {

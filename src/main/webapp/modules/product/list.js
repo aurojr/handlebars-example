@@ -3,11 +3,12 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var list;
+  var load, list, select,
+    selectedList = [];
 
   list = function () {
     var products;
-    App.Product.Service.search(function (data) {
+    return App.Product.Service.search(function (data) {
       products = {
         products: data
       };
@@ -15,14 +16,33 @@ var App = App || {};
       App.API.get(App.Resources.Templates.product.list, function (data) {
         var template = Handlebars.compile(data);
         App.API.changeMainContent(template(products));
-      }, 'html');
-    }, function (obj) {
-      console.error('Products loading has failed! ' + obj.responseText, obj);
+      }, 'html').then(function () {
+        jQuery('div#products-container>div').click(function () {
+          select(this);
+        });
+      });
     });
+  };
+
+  select = function (node) {
+    var jNode = jQuery(node);
+    if (jNode.hasClass('selected')) {
+      selectedList.remove(jNode.find('h3').text());
+    } else {
+      selectedList.push(jNode.find('h3').text());
+    }
+    jNode.toggleClass('selected');
+    alert(selectedList);
+  };
+
+  load = function () {
+    list()
   };
 
   App.Product = App.Product || {};
   App.Product.Controller = {
-    list: list
+    List: {
+      load: load
+    }
   };
 }());

@@ -18,6 +18,14 @@ var App = App || {};
       jQuery(window).on('hashchange', function () {
         App.Routes.render(window.location.hash);
       });
+
+      // TODO: Remove this from here
+      if (!Array.prototype.remove) {
+        Array.prototype.remove = function (val) {
+          var i = this.indexOf(val);
+          return i > -1 ? this.splice(i, 1) : [];
+        };
+      }
     });
   };
 
