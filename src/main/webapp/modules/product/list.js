@@ -32,11 +32,10 @@ var App = App || {};
       selectedList.push(jNode.find('h3').text());
     }
     jNode.toggleClass('selected');
-    alert(selectedList);
   };
 
   load = function () {
-    list()
+    list();
   };
 
   App.Product = App.Product || {};
