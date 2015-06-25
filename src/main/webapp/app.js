@@ -10,6 +10,8 @@ var App = App || {};
         jQuery('.preloader').delay(400).fadeOut(500);
         App.PreLoader.loadIndex().then(function () {
           App.Routes.render(window.location.hash);
+        }, function (obj) {
+          console.error('Index page loading has failed! ' + obj.responseText, obj);
         });
       });
 

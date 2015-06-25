@@ -16,6 +16,8 @@ var App = App || {};
         var template = Handlebars.compile(data);
         App.API.changeMainContent(template(products));
       }, 'html');
+    }, function (obj) {
+      console.error('Products loading has failed! ' + obj.responseText, obj);
     });
   };
 
