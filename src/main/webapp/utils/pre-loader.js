@@ -5,11 +5,13 @@ var App = App || {};
 
   var loadIndex;
 
+  //--------------- Exported functions -----------------//
   loadIndex = function () {
     return App.Menu.render('nav');
   };
 
-  App.PreLoader = {
+  App.Utils = App.Utils || {};
+  App.Utils.PreLoader = {
     loadIndex: loadIndex
   };
 }());

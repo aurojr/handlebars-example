@@ -3,11 +3,8 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var get, renderPartial, changeMainContent, processTemplate, fetchPartial;
-
-  get = function (url, data, success, dataType) {
-    return Promise.resolve(jQuery.get(url, data, success, dataType));
-  };
+  var get, renderPartial, changeMainContent,
+    processTemplate, fetchPartial;
 
   processTemplate = function (selector, data) {
     var $element, template;
@@ -23,12 +20,17 @@ var App = App || {};
     }, 'html');
   };
 
-  renderPartial = function (templateLocation, selector, data) {
-    var partialName = App.Helper.getPartialFromFile(templateLocation);
+  //--------------- Exported functions -----------------//
+  get = function (url, data, success, dataType) {
+    return Promise.resolve(jQuery.get(url, data, success, dataType));
+  };
 
-    return Promise.resolve(fetchPartial(partialName, templateLocation).then(function () {
+  renderPartial = function (templateLocation, selector, data) {
+    var partialName = App.Utils.Helper.getPartialFromFile(templateLocation);
+
+    return fetchPartial(partialName, templateLocation).then(function () {
       processTemplate(selector, data);
-    }));
+    });
   };
 
   changeMainContent = function (content) {

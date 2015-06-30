@@ -5,6 +5,12 @@ var App = App || {};
 
   var register, formatCurrency, getPartialFromFile;
 
+  //--------------- Exported functions -----------------//
+  register = function () {
+    Handlebars.registerHelper('formatCurrency', formatCurrency);
+    Handlebars.registerHelper('getPartialFromFile', getPartialFromFile);
+  };
+
   formatCurrency = function (context) {
     var ret = '';
 
@@ -24,16 +30,12 @@ var App = App || {};
     return partialName;
   };
 
-  register = function () {
-    Handlebars.registerHelper('formatCurrency', formatCurrency);
-    Handlebars.registerHelper('getPartialFromFile', getPartialFromFile);
-  };
-
-  App.Helper = {
+  App.Utils = App.Utils || {};
+  App.Utils.Helper = {
     register: register,
     formatCurrency: formatCurrency,
     getPartialFromFile: getPartialFromFile
   };
 
-  App.Helper.register();
+  App.Utils.Helper.register();
 }());

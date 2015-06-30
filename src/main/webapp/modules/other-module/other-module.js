@@ -5,6 +5,7 @@ var App = App || {};
 
   var useApiGreeting, myOwnStuff;
 
+  //--------------- Exported functions -----------------//
   useApiGreeting = function (name) {
     App.API.doubleGreeting(name);
   };

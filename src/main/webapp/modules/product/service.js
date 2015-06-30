@@ -5,10 +5,9 @@ var App = App || {};
 
   var search;
 
+  //--------------- Exported functions -----------------//
   search = function (successFn) {
-    return App.API.get('api/product', function (data) {
-      successFn(data);
-    });
+    return App.Utils.ServiceUtil.serviceGet('api/product', successFn);
   };
 
   App.Product = App.Product || {};

@@ -5,10 +5,9 @@ var App = App || {};
 
   var load;
 
+  //--------------- Exported functions -----------------//
   load = function (successFn) {
-    return App.API.get('api/menu', function (data) {
-      successFn(data);
-    });
+    return App.Utils.ServiceUtil.serviceGet('api/menu', successFn);
   };
 
   App.Menu = App.Menu || {};

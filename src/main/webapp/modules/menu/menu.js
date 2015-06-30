@@ -5,6 +5,7 @@ var App = App || {};
 
   var render, changeActive;
 
+  //--------------- Exported functions -----------------//
   render = function (selector) {
     var menuItems;
     return App.Menu.Service.load(function (data) {
