@@ -33,6 +33,25 @@
     <finalName>handlebars-example</finalName>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.version}</version>
+        <configuration>
+          <encoding>${project.encoding}</encoding>
+          <inputEncoding>${project.encoding}</inputEncoding>
+          <outputEncoding>${project.encoding}</outputEncoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.version}</version>
+        <configuration>
+          <source>${jdk.version}</source>
+          <target>${jdk.version}</target>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>${tomcat.version}</version>
@@ -121,6 +140,12 @@
   </profiles>
 
   <properties>
+    <jdk.version>1.7</jdk.version>
+    <project.encoding>UTF-8</project.encoding>
+    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
+    <maven.compiler.version>3.3</maven.compiler.version>
+    <maven.surefire.version>2.15</maven.surefire.version>
     <grunt-maven-plugin.version>1.4.1</grunt-maven-plugin.version>
     <tomcat.version>2.0</tomcat.version>
     <jersey.version>1.19</jersey.version>
