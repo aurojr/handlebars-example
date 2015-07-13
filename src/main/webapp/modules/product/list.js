@@ -18,13 +18,16 @@ var App = App || {};
   };
 
   loadPage = function (products) {
-    App.API.get(App.Resources.Templates.product.list, function (data) {
+    console.log('Load');
+    return App.API.get(App.Resources.Templates.product.list, function (data) {
+      console.log('Compile template');
       var template = Handlebars.compile(data);
       App.API.changeMainContent(template(products));
     }, 'html');
   };
 
   afterLoad = function () {
+    console.log('After Load');
     jQuery('div#products-container>div').click(function () {
       select(this);
     });
