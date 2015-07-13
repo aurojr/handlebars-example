@@ -3,10 +3,10 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var serviceGet;
+  var get;
 
   //--------------- Exported functions -----------------//
-  serviceGet = function (serviceUrl, successFn) {
+  get = function (serviceUrl, successFn) {
     return App.API.get(serviceUrl, function (data) {
       if (typeof successFn === 'function') {
         successFn(data);
@@ -14,9 +14,9 @@ var App = App || {};
     });
   };
 
-  App.Utils = App.Utils || {};
-  App.Utils.ServiceUtil = {
-    serviceGet: serviceGet
+  App.Service = App.Service || {};
+  App.Service.Base = {
+    get: get
   };
 
 }());

@@ -32,7 +32,7 @@ var App = App || {};
 
   //--------------- Exported functions -----------------//
   load = function () {
-    return App.Product.Service.search().then(loadPage).then(afterLoad);
+    return App.Service.Product.search().then(loadPage).then(afterLoad);
   };
 
   App.Product = App.Product || {};

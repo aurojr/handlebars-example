@@ -8,7 +8,7 @@ var App = App || {};
   //--------------- Exported functions -----------------//
   render = function (selector) {
     var menuItems;
-    return App.Menu.Service.load(function (data) {
+    return App.Service.Menu.load(function (data) {
       menuItems = data;
     }).then(function () {
       return App.API.renderPartial(App.Resources.Templates.menu, selector, menuItems);

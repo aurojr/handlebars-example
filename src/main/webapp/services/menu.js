@@ -7,11 +7,11 @@ var App = App || {};
 
   //--------------- Exported functions -----------------//
   load = function (successFn) {
-    return App.Utils.ServiceUtil.serviceGet('api/menu', successFn);
+    return App.Service.Base.get('api/menu', successFn);
   };
 
-  App.Menu = App.Menu || {};
-  App.Menu.Service = {
+  App.Service = App.Service || {};
+  App.Service.Menu = {
     load: load
   };
 }());

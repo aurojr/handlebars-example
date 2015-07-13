@@ -7,11 +7,11 @@ var App = App || {};
 
   //--------------- Exported functions -----------------//
   search = function (successFn) {
-    return App.Utils.ServiceUtil.serviceGet('api/product', successFn);
+    return App.Service.Base.get('api/product', successFn);
   };
 
-  App.Product = App.Product || {};
-  App.Product.Service = {
+  App.Service = App.Service || {};
+  App.Service.Product = {
     search: search
   };
 }());
