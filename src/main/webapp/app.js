@@ -17,7 +17,10 @@ var App = App || {};
   load = function () {
     jQuery(document).ready(function () {
       jQuery(window).load(function () {
+        // Just an animation - avoid showing handlebars templates when the internet is slow
         jQuery('.preloader').delay(400).fadeOut(500);
+
+        // Page renderer
         App.Utils.PreLoader.loadIndex().then(render, loadIndexFailed);
       });
 

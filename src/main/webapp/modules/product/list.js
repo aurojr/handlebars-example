@@ -4,17 +4,22 @@ var App = App || {};
   'use strict';
 
   var load,
-    select, loadPage, afterLoad,
-    selectedList = [];
+    select, loadPage, afterLoad, getProduct;
+
+  getProduct = function (node) {
+    return node.find('h3').text();
+  };
 
   select = function (node) {
-    var jNode = jQuery(node);
+    var jNode = jQuery(node),
+      selectedList = App.Utils.LocalStorage.getItem(App.Utils.LocalStorage.keys.currentCart) || [];
     if (jNode.hasClass('selected')) {
-      selectedList.remove(jNode.find('h3').text());
+      selectedList.remove(getProduct(jNode));
     } else {
-      selectedList.push(jNode.find('h3').text());
+      selectedList.push(getProduct(jNode));
     }
     jNode.toggleClass('selected');
+    App.Utils.LocalStorage.setItem(App.Utils.LocalStorage.keys.currentCart, selectedList);
   };
 
   loadPage = function (products) {
@@ -25,6 +30,15 @@ var App = App || {};
   };
 
   afterLoad = function () {
+    var selectedList = App.Utils.LocalStorage.getItem(App.Utils.LocalStorage.keys.currentCart) || [];
+    jQuery('div#products-container>div').each(function (i, item) {
+      var jNode = jQuery(item),
+        product = getProduct(jNode);
+      if ($.inArray(product, selectedList) >= 0) {
+        jNode.toggleClass('selected');
+      }
+    });
+
     jQuery('div#products-container>div').click(function () {
       select(this);
     });
