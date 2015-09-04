@@ -22,17 +22,13 @@ var App = App || {};
 
         // Page renderer
         App.Utils.PreLoader.loadIndex().then(render, loadIndexFailed);
+
+        // Empty the cart
+        // TODO: empty the cart only when unicorns fart
+        App.Utils.PreLoader.emptyCart();
       });
 
       jQuery(window).on('hashchange', render);
-
-      // TODO: Remove this from here
-      if (!Array.prototype.remove) {
-        Array.prototype.remove = function (val) {
-          var i = this.indexOf(val);
-          return i > -1 ? this.splice(i, 1) : [];
-        };
-      }
     });
   };
 

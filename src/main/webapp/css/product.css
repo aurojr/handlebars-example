@@ -9,6 +9,8 @@ div#products-container > div {
   border: 0.066em solid black;
   padding: 0.5em;
   margin: 0.33em;
+  background-color: #ffffff;
+  cursor: pointer;
   -webkit-box-shadow: 0.3em 0.3em 0.1em 0.1em rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0.3em 0.3em 0.1em 0.1em rgba(0, 0, 0, 0.75);
   box-shadow: 0.3em 0.3em 0.1em 0.1em rgba(0, 0, 0, 0.75);
@@ -18,7 +20,7 @@ div#products-container > div.selected {
   -webkit-box-shadow: 0.1em 0.1em rgba(32, 20, 86, 0.75);
   -moz-box-shadow: 0.1em 0.1em rgba(32, 20, 86, 0.75);
   box-shadow: 0.1em 0.1em rgba(32, 20, 86, 0.75);
-  background-color: #ffffff;
+  background-color: #f7f7EE;
   position: relative;
-top: 0.3em;
+  top: 0.3em;
 }
