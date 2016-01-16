@@ -17,7 +17,7 @@ import com.handlebars.example.service.vo.MenuItem;
 public class MenuService {
 
 	@GET
-	@Path("")
+	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getMenu() {
 		Menu menu = new Menu();

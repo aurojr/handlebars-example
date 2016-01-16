@@ -15,7 +15,7 @@ import com.handlebars.example.service.vo.Product;
 @Path("/product")
 public class ProductService {
 
-	@Path("")
+	@Path("/")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getProducts() {

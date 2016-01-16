@@ -23,4 +23,9 @@
   	<servlet-name>example-webservice</servlet-name>
   	<url-pattern>/api/*</url-pattern>
   </servlet-mapping>
+  
+<!--   <error-page> -->
+<!--   	<error-code>404</error-code> -->
+<!--   	<location>https://http.cat/404</location> -->
+<!--   </error-page> -->
 </web-app>
