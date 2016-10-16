@@ -24,3 +24,4 @@ bower_components
 
 # files copied by the build process
 src/main/webapp/lib/*
+src/main/test/lib/*

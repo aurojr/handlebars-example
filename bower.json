@@ -7,5 +7,22 @@
     "jquery": "~2.1.3",
     "handlebars": "latest"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "mocha": "~2.2.4",
+    "chai": "~2.3.0"
+  },
+  "homepage": "https://github.com/aurojr/handlebars-example",
+  "authors": [
+    "Auro do N. Pimentel Jr. <auro.np@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }

@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function (grunt) {
+  var serveStatic = require('serve-static');
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
@@ -12,8 +13,14 @@ module.exports = function (grunt) {
     app: 'src/main/webapp',
     test: 'src/main/test',
     dist: 'target/classes',
-    bowerTest: grunt.file.readJSON('src/main/test/.bowerrc'),
-    bowerProd: grunt.file.readJSON('.bowerrc'),
+    bower: grunt.file.readJSON('.bowerrc'),
+    filePathFunction: function (filePath) {
+      var removeBowerFolder = new RegExp('^.*' + config.bower.directory + '\/', 'g');
+      var removeIntermediateFolders = new RegExp('lib\/([A-Za-z0-9._%\\+-]+\/){1}([A-Za-z0-9._%\\+-]+\/){1,}', 'g');
+      filePath = filePath.replace(removeBowerFolder, 'lib/').replace(removeIntermediateFolders, 'lib/$1/').replace('\/\/', '\/');
+
+      return '<script src="' + filePath + '"></script>';
+    }
   };
 
   grunt.initConfig({
@@ -23,11 +30,12 @@ module.exports = function (grunt) {
 
     jshint: {
       files: [
-        'Gruntfile.js',
+        //'Gruntfile.js',
         '<%= config.app %>/**/*.js',
         '<%= config.test %>/**/*.js',
         '!<%= config.app %>/lib/**/*.js',
-        '!<%= config.test %>/<%= config.bowerTest.directory %>/**/*.js'],
+        '!<%= config.test %>/lib/**/*.js'
+      ],
       options: {
         jshintrc: '.jshintrc'
       }
@@ -51,10 +59,10 @@ module.exports = function (grunt) {
     },
 
     // Mocha testing framework configuration options
-    mocha: {
+    mocha_phantomjs: {
       all: {
         options: {
-          reporter: 'Nyan',
+          reporter: 'progress',
           run: true,
           urls: ['http://<%= connect.options.hostname %>:<%= connect.test.options.port %>/index.html']
         }
@@ -74,8 +82,8 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-              connect.static(config.app),
-              connect().use('/bower_components', connect.static('<%= config.test %>/bower_components'))
+              serveStatic(config.app),
+              connect().use('/lib', serveStatic('<%= config.app %>/lib'))
             ];
           }
         }
@@ -86,8 +94,8 @@ module.exports = function (grunt) {
           port: 9001,
           middleware: function (connect) {
             return [
-              connect.static(config.test),
-              connect().use('/bower_components', connect.static('<%= config.test %>/bower_components'))
+              serveStatic(config.test),
+              connect().use('/lib', serveStatic('<%= config.test %>/lib'))
             ];
           }
         }
@@ -119,19 +127,15 @@ module.exports = function (grunt) {
         ignorePath: '/^\/|\.\.\//',
         src: ['<%= config.app %>/index.html'],
         options: {
-          directory: 'target-grunt/<%= config.bowerTest.directory %>',
+          cwd: '<%= config.app %>/lib',
+          directory: 'target-grunt/<%= config.bower.directory %>',
           bowerJson: require('./target-grunt/bower.json')
         },
         fileTypes: {
           html: {
             replace: {
-              js: function (filePath) {
-                var removeBowerFolder = new RegExp('^.*' + config.bowerTest.directory + '\/', 'g');
-                var removeIntermediateFolders = new RegExp('lib\/([A-Za-z0-9._%\\+-]+\/){1}([A-Za-z0-9._%\\+-]+\/){1,}', 'g');
-                filePath = filePath.replace(removeBowerFolder, 'lib/').replace(removeIntermediateFolders, 'lib/$1/').replace('\/\/', '\/');
-
-                return '<script src="' + filePath + '"></script>';
-              }
+              js: config.filePathFunction,
+              css: config.filePathFunction
             }
           }
         }
@@ -140,8 +144,7 @@ module.exports = function (grunt) {
         ignorePath: /^\/|\.\.\//,
         src: ['<%= config.test %>/index.html'],
         options: {
-          directory: '<%= config.test %>/<%= config.bowerTest.directory %>',
-          bowerJson: require('./' + config.test + '/bower.json')
+          devDependencies: true
         }
       }
     },
@@ -153,7 +156,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('development', ['jshint', 'bower:all', 'wiredep:app', 'test']);
-  grunt.registerTask('test', ['wiredep:test', 'connect:test', 'mocha']);
+  grunt.registerTask('test', ['bower:test','wiredep:test', 'connect:test', 'mocha_phantomjs']);
   grunt.registerTask('production', ['jshint', 'concat', 'uglify']);
   grunt.registerTask('default', ['development']);
 };
