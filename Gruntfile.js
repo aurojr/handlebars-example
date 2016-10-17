@@ -13,14 +13,7 @@ module.exports = function (grunt) {
     app: 'src/main/webapp',
     test: 'src/main/test',
     dist: 'target/classes',
-    bower: grunt.file.readJSON('.bowerrc'),
-    filePathFunction: function (filePath) {
-      var removeBowerFolder = new RegExp('^.*' + config.bower.directory + '\/', 'g');
-      var removeIntermediateFolders = new RegExp('lib\/([A-Za-z0-9._%\\+-]+\/){1}([A-Za-z0-9._%\\+-]+\/){1,}', 'g');
-      filePath = filePath.replace(removeBowerFolder, 'lib/').replace(removeIntermediateFolders, 'lib/$1/').replace('\/\/', '\/');
-
-      return '<script src="' + filePath + '"></script>';
-    }
+    bower: grunt.file.readJSON('.bowerrc')
   };
 
   grunt.initConfig({
@@ -44,7 +37,7 @@ module.exports = function (grunt) {
     bower: {
       all: {
         options: {
-          install: false,
+          install: true,
           targetDir: '<%= config.app %>/lib',
           layout: 'byComponent'
         }
@@ -124,18 +117,25 @@ module.exports = function (grunt) {
 
     wiredep: {
       app: {
-        ignorePath: '/^\/|\.\.\//',
+        ignorePath: /^\/|\.\.\//,
         src: ['<%= config.app %>/index.html'],
-        options: {
-          cwd: '<%= config.app %>/lib',
-          directory: 'target-grunt/<%= config.bower.directory %>',
-          bowerJson: require('./target-grunt/bower.json')
-        },
         fileTypes: {
           html: {
             replace: {
-              js: config.filePathFunction,
-              css: config.filePathFunction
+              js: function (filePath) {
+                var removeBowerFolder = new RegExp('^.*' + config.bower.directory + '\/', 'g');
+                var removeIntermediateFolders = new RegExp('lib\/([A-Za-z0-9._%\\+-]+\/){1}([A-Za-z0-9._%\\+-]+\/){1,}', 'g');
+                filePath = filePath.replace(removeBowerFolder, 'lib/').replace(removeIntermediateFolders, 'lib/$1/').replace('\/\/', '\/');
+
+                return '<script src="' + filePath + '"></script>';
+              },
+              css: function (filePath) {
+                var removeBowerFolder = new RegExp('^.*' + config.bower.directory + '\/', 'g');
+                var removeIntermediateFolders = new RegExp('lib\/([A-Za-z0-9._%\\+-]+\/){1}([A-Za-z0-9._%\\+-]+\/){1,}', 'g');
+                filePath = filePath.replace(removeBowerFolder, 'lib/').replace(removeIntermediateFolders, 'lib/$1/').replace('\/\/', '\/');
+
+                return '<link rel="stylesheet" type="text/css" href="' + filePath + '" />';
+              }
             }
           }
         }

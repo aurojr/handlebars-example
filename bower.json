@@ -5,7 +5,24 @@
   "private": true,
   "dependencies": {
     "jquery": "~2.1.3",
-    "handlebars": "latest"
+    "handlebars": "latest",
+    "bootstrap": "^3.3.7"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "./": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
   },
   "devDependencies": {
     "mocha": "~2.2.4",

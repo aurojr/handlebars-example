@@ -87,8 +87,8 @@
         <artifactId>grunt-maven-plugin</artifactId>
         <version>${grunt-maven-plugin.version}</version>
         <configuration>
-          <!-- <gruntExecutable>../node_modules/grunt-cli/bin/grunt</gruntExecutable>
-          <runGruntWithNode>true</runGruntWithNode> -->
+          <gruntExecutable>../node_modules/grunt-cli/bin/grunt</gruntExecutable>
+          <runGruntWithNode>true</runGruntWithNode>
           <showColors>true</showColors>
         </configuration>
         <executions>
