@@ -124,15 +124,15 @@ module.exports = function (grunt) {
             replace: {
               js: function (filePath) {
                 var removeBowerFolder = new RegExp('^.*' + config.bower.directory + '\/', 'g');
-                var removeIntermediateFolders = new RegExp('lib\/([A-Za-z0-9._%\\+-]+\/){1}([A-Za-z0-9._%\\+-]+\/){1,}', 'g');
-                filePath = filePath.replace(removeBowerFolder, 'lib/').replace(removeIntermediateFolders, 'lib/$1/').replace('\/\/', '\/');
+                var removeIntermediateFolders = new RegExp('dist', 'g');
+                filePath = filePath.replace(removeBowerFolder, 'lib/').replace(removeIntermediateFolders, '').replace('\/\/', '\/');
 
                 return '<script src="' + filePath + '"></script>';
               },
               css: function (filePath) {
                 var removeBowerFolder = new RegExp('^.*' + config.bower.directory + '\/', 'g');
-                var removeIntermediateFolders = new RegExp('lib\/([A-Za-z0-9._%\\+-]+\/){1}([A-Za-z0-9._%\\+-]+\/){1,}', 'g');
-                filePath = filePath.replace(removeBowerFolder, 'lib/').replace(removeIntermediateFolders, 'lib/$1/').replace('\/\/', '\/');
+                var removeIntermediateFolders = new RegExp('dist', 'g');
+                filePath = filePath.replace(removeBowerFolder, 'lib/').replace(removeIntermediateFolders, '').replace('\/\/', '\/');
 
                 return '<link rel="stylesheet" type="text/css" href="' + filePath + '" />';
               }

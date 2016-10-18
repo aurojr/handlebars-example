@@ -10,10 +10,9 @@
   },
   "exportsOverride": {
     "bootstrap": {
-      "./": [
-        "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
-      ]
+      "css": "dist/css",
+      "js": "dist/js",
+      "fonts": "dist/fonts"
     }
   },
   "overrides": {
