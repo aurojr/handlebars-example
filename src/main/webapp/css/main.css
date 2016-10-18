@@ -1,35 +1,7 @@
-body {
-  font-family: Tahoma, Geneva, sans-serif;
-  font-size: 15px;
-  color: #414141;
-  padding: 0.18em;
-}
-
-a,
-a:link,
-a:visited,
-a:hover,
-a:active {
-  color: #414141;
-  text-decoration: none;
-}
-
-header {
-  padding: 3em 5em 0;
+article {
+  padding: 0.5em 0.5em;
 }
 
 section {
-  padding: 0 5em 0;
-}
-
-h3 {
-  font-variant: small-caps;
-  font-weight: bold;
-  font-size: 1.043em;
-}
-
-div#container {
-  background-color: #F7F7EE;
-  padding: 2em 2.5em 1em;
-  min-height: 10em;
+  padding: 0.5em 0.5em 0;
 }

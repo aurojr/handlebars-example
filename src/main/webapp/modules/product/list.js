@@ -13,12 +13,15 @@ var App = App || {};
   select = function (node) {
     var jNode = jQuery(node),
       selectedList = App.Utils.LocalStorage.getItem(App.Utils.LocalStorage.keys.currentCart) || [];
-    if (jNode.hasClass('selected')) {
+    if (jNode.hasClass('show')) {
       selectedList.remove(getProduct(jNode));
+      jNode.addClass('hidden');
+      jNode.removeClass('show');
     } else {
       selectedList.push(getProduct(jNode));
+      jNode.addClass('show');
+      jNode.removeClass('hidden');
     }
-    jNode.toggleClass('selected');
     App.Utils.LocalStorage.setItem(App.Utils.LocalStorage.keys.currentCart, selectedList);
   };
 
@@ -31,15 +34,15 @@ var App = App || {};
 
   afterLoad = function () {
     var selectedList = App.Utils.LocalStorage.getItem(App.Utils.LocalStorage.keys.currentCart) || [];
-    jQuery('div#products-container>div').each(function (i, item) {
-      var jNode = jQuery(item),
-        product = getProduct(jNode);
+    jQuery('div#products-container button').each(function (i, item) {
+      var jNode = jQuery(item);
+      var product = getProduct(jNode);
       if ($.inArray(product, selectedList) >= 0) {
-        jNode.toggleClass('selected');
+        jNode.addClass('show');
       }
     });
 
-    jQuery('div#products-container>div').click(function () {
+    jQuery('div#products-container button').click(function () {
       select(this);
     });
   };

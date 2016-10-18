@@ -1,9 +1,16 @@
-<div id="products-container">
+<div id="products-container" class="row">
   {{#each this}}
-  <div>
-    <h3>{{name}}</h3>
-    <span>Price: {{formatCurrency price}}</span>
-    <img src="{{image}}"></img>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="panel panel-default">
+      <button class="btn btn-success">
+        <span class="glyphicon glyphicon-ok"></span>
+      </button>
+      <h3 class="text-center">{{name}}</h3>
+      <p class="text-center">Price: {{formatCurrency price}}</p>
+      <a href="#">
+        <img src="{{image}}" class="img-responsible center-block"></img>
+      </a>
+    </div>
   </div>
   {{/each}}
 </div>
