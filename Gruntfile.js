@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = function (grunt) {
-  var serveStatic = require('serve-static');
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  var serveStatic = require('serve-static');
   // Configurable paths
   var config = {
     app: 'src/main/webapp',
@@ -37,14 +37,14 @@ module.exports = function (grunt) {
     bower: {
       all: {
         options: {
-          install: true,
+          install: false,
           targetDir: '<%= config.app %>/lib',
           layout: 'byComponent'
         }
       },
       test: {
         options: {
-          install: true,
+          install: false,
           targetDir: '<%= config.test %>/lib',
           layout: 'byComponent'
         }
