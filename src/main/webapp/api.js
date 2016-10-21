@@ -3,10 +3,7 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var get, renderPartial, changeMainContent,
-    processTemplate, fetchPartial;
-
-  processTemplate = function (selector, data) {
+  var processTemplate = function (selector, data) {
     var $element, template;
 
     $element = jQuery(selector).text();
@@ -14,18 +11,18 @@ var App = App || {};
     jQuery(selector).html(template(data));
   };
 
-  fetchPartial = function (partialName, templateLocation) {
+  var fetchPartial = function (partialName, templateLocation) {
     return App.API.get(templateLocation, function (data) {
       Handlebars.registerPartial(partialName, data);
     }, 'html');
   };
 
   //--------------- Exported functions -----------------//
-  get = function (url, data, success, dataType) {
+  var get = function (url, data, success, dataType) {
     return Promise.resolve(jQuery.get(url, data, success, dataType));
   };
 
-  renderPartial = function (templateLocation, selector, data) {
+  var renderPartial = function (templateLocation, selector, data) {
     var partialName = App.Utils.Helper.getPartialFromFile(templateLocation);
 
     return fetchPartial(partialName, templateLocation).then(function () {
@@ -33,7 +30,7 @@ var App = App || {};
     });
   };
 
-  changeMainContent = function (content) {
+  var changeMainContent = function (content) {
     jQuery('#container').html(content);
   };
 

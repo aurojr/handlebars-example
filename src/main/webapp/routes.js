@@ -3,21 +3,19 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var index, product, link2, render;
-
-  index = function () {
+  var index = function () {
     console.log('Index page');
   };
 
-  product = function () {
+  var product = function () {
     App.Product.Controller.List.load();
   };
 
-  link2 = function () {
+  var link2 = function () {
     console.log('Link2 page');
   };
 
-  render = function (uri) {
+  var render = function (uri) {
     App.API.changeMainContent('');
     App.Menu.changeActive(uri);
 

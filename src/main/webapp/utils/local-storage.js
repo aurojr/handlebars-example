@@ -2,24 +2,23 @@ var App = App || {};
 
 (function () {
   'use strict';
-  var keys, getItem, setItem, removeItem;
 
   //--------------- Exported functions -----------------//
-  setItem = function (name, value) {
+  var setItem = function (name, value) {
     value = JSON.stringify(value);
     localStorage.setItem(name, value);
   };
 
-  getItem = function (name) {
+  var getItem = function (name) {
     var value = localStorage.getItem(name);
     return JSON.parse(value);
   };
 
-  removeItem = function (name) {
+  var removeItem = function (name) {
     localStorage.removeItem(name);
   };
 
-  keys = {
+  var keys = {
     currentCart: 'currentCart'
   };
 

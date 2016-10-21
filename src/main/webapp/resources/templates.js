@@ -3,9 +3,7 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var templates;
-
-  templates = function () {
+  var templates = function () {
     return {
       menu: 'modules/menu/menu.html',
       product: {

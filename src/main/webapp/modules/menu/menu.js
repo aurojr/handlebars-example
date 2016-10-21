@@ -3,10 +3,8 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var render, changeActive;
-
   //--------------- Exported functions -----------------//
-  render = function (selector) {
+  var render = function (selector) {
     var menuItems;
     return App.Service.Menu.load(function (data) {
       menuItems = data;
@@ -15,7 +13,7 @@ var App = App || {};
     });
   };
 
-  changeActive = function (uri) {
+  var changeActive = function (uri) {
     jQuery('nav li').removeClass('active');
     jQuery('nav li a[href^="' + uri + '"]').parent().addClass('active');
   };

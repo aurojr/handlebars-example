@@ -3,26 +3,19 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var register, formatCurrency, getPartialFromFile, getCurrentCart;
-
   //--------------- Exported functions -----------------//
-  register = function () {
-    Handlebars.registerHelper('formatCurrency', formatCurrency);
-    Handlebars.registerHelper('getPartialFromFile', getPartialFromFile);
-    Handlebars.registerHelper('getCurrentCart', getCurrentCart);
-  };
 
-  formatCurrency = function (context) {
+  var formatCurrency = function (value) {
     var ret = '';
 
-    if (context !== undefined) {
-      ret = '$ ' + context;
+    if (value !== undefined) {
+      ret = '$ ' + value;
     }
 
     return ret;
   };
 
-  getPartialFromFile = function (fileName) {
+  var getPartialFromFile = function (fileName) {
     var partialName, tplLocationArray;
 
     tplLocationArray = fileName.split('/');
@@ -31,8 +24,14 @@ var App = App || {};
     return partialName;
   };
 
-  getCurrentCart = function () {
-    return App.Utils.LocalStorage.getItem(App.Utils.LocalStorage.keys.currentCart);
+  var getCurrentCart = function () {
+    return App.Utils.Product.getCurrentCart();
+  };
+
+  var register = function () {
+    Handlebars.registerHelper('formatCurrency', formatCurrency);
+    Handlebars.registerHelper('getPartialFromFile', getPartialFromFile);
+    Handlebars.registerHelper('getCurrentCart', getCurrentCart);
   };
 
   App.Utils = App.Utils || {};

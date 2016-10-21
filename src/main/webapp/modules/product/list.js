@@ -3,52 +3,56 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var load,
-    select, loadPage, afterLoad, getProduct;
-
-  getProduct = function (node) {
+  var getProduct = function (node) {
     return node.find('h3').text();
   };
 
-  select = function (node) {
-    var jNode = jQuery(node),
-      selectedList = App.Utils.LocalStorage.getItem(App.Utils.LocalStorage.keys.currentCart) || [];
-    if (jNode.hasClass('show')) {
-      selectedList.remove(getProduct(jNode));
-      jNode.addClass('hidden');
-      jNode.removeClass('show');
+  var select = function (node) {
+    var panel = $(node);
+    var button = panel.find('button');
+    var currentcArt = App.Utils.Product.getCurrentCart() || [];
+
+    if (button.hasClass('show')) {
+      currentcArt.remove(getProduct(panel));
+      button.addClass('hidden');
+      button.removeClass('show');
     } else {
-      selectedList.push(getProduct(jNode));
-      jNode.addClass('show');
-      jNode.removeClass('hidden');
+      currentcArt.push(getProduct(panel));
+      button.addClass('show');
+      button.removeClass('hidden');
     }
-    App.Utils.LocalStorage.setItem(App.Utils.LocalStorage.keys.currentCart, selectedList);
+    App.Utils.LocalStorage.setItem(App.Utils.LocalStorage.keys.currentCart, currentcArt);
   };
 
-  loadPage = function (products) {
+  var loadPage = function (products) {
     return App.API.get(App.Resources.Templates.product.list, function (data) {
       var template = Handlebars.compile(data);
       App.API.changeMainContent(template(products));
     }, 'html');
   };
 
-  afterLoad = function () {
-    var selectedList = App.Utils.LocalStorage.getItem(App.Utils.LocalStorage.keys.currentCart) || [];
-    jQuery('div#products-container button').each(function (i, item) {
-      var jNode = jQuery(item);
-      var product = getProduct(jNode);
-      if ($.inArray(product, selectedList) >= 0) {
-        jNode.addClass('show');
+  var afterLoad = function () {
+    var currentcArt = App.Utils.Product.getCurrentCart() || [];
+    $('#products-container div.panel').each(function (i, item) {
+      var panel = $(item);
+      var button = panel.find('button');
+      var product = getProduct(panel);
+      if ($.inArray(product, currentcArt) >= 0) {
+        button.addClass('show');
+        button.removeClass('hidden');
+      } else {
+        button.removeClass('show');
+        button.addClass('hidden');
       }
     });
 
-    jQuery('div#products-container button').click(function () {
+    $('#products-container div.panel').click(function () {
       select(this);
     });
   };
 
   //--------------- Exported functions -----------------//
-  load = function () {
+  var load = function () {
     return App.Service.Product.search().then(loadPage).then(afterLoad);
   };
 

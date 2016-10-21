@@ -3,14 +3,12 @@ var App = App || {};
 (function () {
   'use strict';
 
-  var useApiGreeting, myOwnStuff;
-
   //--------------- Exported functions -----------------//
-  useApiGreeting = function (name) {
+  var useApiGreeting = function (name) {
     App.API.doubleGreeting(name);
   };
 
-  myOwnStuff = function (name) {
+  var myOwnStuff = function (name) {
     App.API.doubleGreeting(name);
   };
 
