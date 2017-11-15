@@ -1,4 +1,4 @@
-# Handlebars example [![Build Status](https://travis-ci.org/luanapp/handlebars-example.svg?branch=master)](https://travis-ci.org/aurojr/handlebars-example)
+# Handlebars example [![Build Status](https://travis-ci.org/luanapp/handlebars-example.svg?branch=master)](https://travis-ci.org/luanapp/handlebars-example)
 
 This project is a personal history of mine on projecting a JS project, regarding organizing the code, choosing frameworks and analysing the pros and cons of each one. Moreover, the difficulties when transitioning from one to another.
 As the initial approach was by using handlebars as a template framework, the project name is *handlebars-example*, but it can change in the future.
