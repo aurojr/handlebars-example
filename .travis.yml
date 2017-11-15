@@ -13,4 +13,4 @@ before_install:
   - bower install
 notifications:
   email:
-    - auro.np@gmail.com
+    - luana.pimentel85@gmail.com
