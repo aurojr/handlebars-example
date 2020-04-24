@@ -6,9 +6,9 @@ var App = App || {};
   var processTemplate = function (selector, data) {
     var $element, template;
 
-    $element = jQuery(selector).text();
+    $element = $(selector).text();
     template = Handlebars.compile($element);
-    jQuery(selector).html(template(data));
+    $(selector).html(template(data));
   };
 
   var fetchPartial = function (partialName, templateLocation) {
@@ -19,7 +19,7 @@ var App = App || {};
 
   //--------------- Exported functions -----------------//
   var get = function (url, data, success, dataType) {
-    return Promise.resolve(jQuery.get(url, data, success, dataType));
+    return Promise.resolve($.get(url, data, success, dataType));
   };
 
   var renderPartial = function (templateLocation, selector, data) {
@@ -31,7 +31,7 @@ var App = App || {};
   };
 
   var changeMainContent = function (content) {
-    jQuery('#container').html(content);
+    $('#container').html(content);
   };
 
   App.API = {
